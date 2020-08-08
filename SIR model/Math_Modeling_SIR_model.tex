@@ -1,0 +1,1127 @@
+\documentclass[a4paper]{article}
+\usepackage{vntex}
+%\usepackage[english,vietnam]{babel}
+%\usepackage[utf8]{inputenc}
+
+%\usepackage[utf8]{inputenc}
+%\usepackage[francais]{babel}
+\usepackage{a4wide,amssymb,epsfig,latexsym,array,hhline,fancyhdr}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol,longtable,amscd}
+\usepackage{diagbox}%Make diagonal lines in tables
+\usepackage{booktabs}
+\usepackage{alltt}
+\usepackage{subfig}
+\usepackage[framemethod=tikz]{mdframed}% For highlighting paragraph backgrounds
+\usepackage{caption,subcaption}
+\usepackage{listings}  %For display source code
+\usepackage{color}
+\usepackage{fancyvrb}
+\usepackage{hyperref}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=C,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\usepackage{lastpage}
+\usepackage[lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}							% Standard graphics package
+\usepackage{array}
+\usepackage{tabularx, caption}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{rotating}
+\usepackage{graphics}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{epsfig}
+\usepackage{tikz}
+\usetikzlibrary{arrows,snakes,backgrounds}
+\usepackage[unicode]{hyperref}
+\hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true} 
+%\usepackage{pstcol} 								% PSTricks with the standard color package
+
+\newtheorem{theorem}{{\bf Định lý}}
+\newtheorem{property}{{\bf Tính chất}}
+\newtheorem{proposition}{{\bf Mệnh đề}}
+\newtheorem{corollary}[proposition]{{\bf Hệ quả}}
+\newtheorem{lemma}[proposition]{{\bf Bổ đề}}
+
+
+%\usepackage{fancyhdr}
+\setlength{\headheight}{40pt}
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\fancyhead[L]{
+ \begin{tabular}{rl}
+    \begin{picture}(25,15)(0,0)
+    \put(0,-8){\includegraphics[width=8mm, height=8mm]{Images/hcmut.png}}
+    %\put(0,-8){\epsfig{width=10mm,figure=hcmut.eps}}
+   \end{picture}&
+	%\includegraphics[width=8mm, height=8mm]{hcmut.png} & %
+	\begin{tabular}{l}
+		\textbf{\bf \ttfamily Trường Đại Học Bách Khoa Tp.Hồ Chí Minh}\\
+		\textbf{\bf \ttfamily Khoa Khoa Học và Kỹ Thuật Máy Tính}
+	\end{tabular} 	
+ \end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{l}
+		\tiny \bf \\
+		\tiny \bf 
+	\end{tabular}  }
+\fancyfoot{} % clear all footer fields
+\fancyfoot[L]{\scriptsize \ttfamily Bài tập lớn môn Mô hinh hoá toán học - Năm học 2019-2020}
+\fancyfoot[R]{\scriptsize \ttfamily Trang {\thepage}/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0.3pt}
+
+
+%%%
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{3}
+\makeatletter
+\newcounter {subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection .\@alph\c@subsubsubsection}
+\newcommand\subsubsubsection{\@startsection{subsubsubsection}{4}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+\newcommand*\l@subsubsubsection{\@dottedtocline{3}{10.0em}{4.1em}}
+\newcommand*{\subsubsubsectionmark}[1]{}
+\makeatother
+
+\everymath{\color{blue}}%make in-line maths symbols blue to read/check easily
+
+\sloppy
+\captionsetup[figure]{labelfont={small,bf},textfont={small,it},belowskip=-1pt,aboveskip=-9pt}
+%space remove between caption, figure, and text
+\captionsetup[table]{labelfont={small,bf},textfont={small,it},belowskip=-1pt,aboveskip=7pt}
+%space remove between caption, table, and text
+
+%\floatplacement{figure}{H}%forced here float placement automatically for figures
+%\floatplacement{table}{H}%forced here float placement automatically for table
+%the following settings (11 lines) are to remove white space before or after the figures and tables
+%\setcounter{topnumber}{2}
+%\setcounter{bottomnumber}{2}
+%\setcounter{totalnumber}{4}
+%\renewcommand{\topfraction}{0.85}
+%\renewcommand{\bottomfraction}{0.85}
+%\renewcommand{\textfraction}{0.15}
+%\renewcommand{\floatpagefraction}{0.8}
+%\renewcommand{\textfraction}{0.1}
+\setlength{\floatsep}{5pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{5pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+ĐẠI HỌC QUỐC GIA THÀNH PHỐ HỒ CHÍ MINH \\
+TRƯỜNG ĐẠI HỌC BÁCH KHOA \\
+KHOA KHOA HỌC - KỸ THUẬT MÁY TÍNH 
+\end{center}
+
+\vspace{1cm}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=3cm]{Images/hcmut.png}
+\end{center}
+\end{figure}
+
+\vspace{1cm}
+
+
+\begin{center}
+\begin{tabular}{c}
+\multicolumn{1}{l}{\textbf{{\Large MÔ HÌNH HOÁ TOÁN HỌC}}}\\
+~~\\
+\hline
+\\
+\multicolumn{1}{l}{\textbf{{\Large Nhóm: HNPUS ---- Bài tập lớn}}}\\
+\\
+\textbf{{\Huge Mô hình SIR}} \\
+\textbf{{\Huge trong dự báo COVID-19}}\\
+\\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{table}[h]
+\begin{tabular}{rrl}
+\hspace{5 cm} & GVHD: & Nguyễn An Khương\\
+
+& SV thực hiện: & Tô Duy Hưng -- 1810198 \\
+& & Võ Hoàng Hải Nam -- 1810340 \\
+& & Võ Thanh Phong -- 1712633 \\
+& & Huỳnh Thị Uyên -- 1810648 \\
+& & Lê Thành Sơn -- 1810481 \\
+\end{tabular}
+\end{table}
+\vspace{1.5cm}
+\begin{center}
+{\footnotesize Tp. Hồ Chí Minh, Tháng 6/2020}
+\end{center}
+\end{titlepage}
+
+
+%\thispagestyle{empty}
+\newpage
+\textbf{\large Bảng phân công công việc}
+\vspace{0.5cm}
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{|p{3cm}|p{10cm}|}
+        \hline
+        \multicolumn{1}{|c|}{Họ và tên} & \multicolumn{1}{c|}{Nhiệm vụ} \\
+         \hline
+         Lê Thành Sơn & Câu 1. Kiến thức và kết quả chuẩn bị\\ 
+         \hline
+         Tô Duy Hưng &  Câu 2. Xây dựng chương trình sử dụng thuật toán Euler tìm nghiệm hệ SIR\\
+         \hline
+         Võ Hoàng Hải Nam & Câu 2. Tìm hiểu thuật toán Runge-Kutta và so sánh với thuật toán Euler\\
+         \hline 
+         Huỳnh Thị Uyên & Câu 3. Lấy mẫu cho hệ số $\beta$ và $\gamma$ sử dụng thuật toán Metropolis–Hastings\\
+         \hline 
+         Võ Thanh Phong & Câu 4. Ước lượng giá trị $R_0$ ở các khu vực\\
+         \hline
+    \end{tabular}
+\end{table}
+
+\vspace{0.5cm}
+\textbf{\large Nhật ký làm việc nhóm}
+\vspace{0.5cm}
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{|p{3cm}|p{10cm}|}
+        \hline
+        \multicolumn{1}{|c|}{Thời gian } & \multicolumn{1}{c|}{Nội dung} \\
+         \hline
+         02/07/2020 & Lập nhóm và gặp mặt phân tích bài tập lớn \\ 
+         \hline
+         06/07/2020 &  Hoàn thiện sơ bộ phần lý thuyết cho câu 1\\
+         \hline
+         08/07/2020 & Hoàn thiện chương trình sử dụng thuật toán Euler\\
+         \hline 
+         09/07/2020 & Hoàn thiện chương trình sử dụng thuật toán Runge-Kutta\\
+         \hline 
+         12/07/2020 & Họp nhóm lần thứ 2 để bàn phương pháp giải quyết các câu còn lại\\
+         \hline
+         16/07/2020 & Hoàn thiện chương trình lấy mẫu sử dụng thuật toán Metropolis–Hastings\\
+         \hline 
+         18/07/2020 & Hoàn thiện chương trình ước lượng $R_0$ và phân tích các khu vực\\
+         \hline 
+         19/07/2020 & Họp nhóm để đánh giá và chỉnh sửa báo cáo. Bàn luận về việc sử dụng Neuron Network trong việc dự đoán các hệ số $[\beta,\gamma,\mu]$\\
+         \hline
+    \end{tabular}
+\end{table}
+
+\vspace{0.5cm}
+\textbf{\large Nhật ký chỉnh sửa báo cáo}
+\vspace{0.5cm}
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{|p{3cm}|p{6cm}|p{4cm}|}
+        \hline
+        \multicolumn{1}{|c|}{Thời gian } & \multicolumn{1}{c|}{Nội dung} & \multicolumn{1}{c|}{Người chỉnh sửa}\\
+         \hline
+         06/07/2020 &  Thêm phần 1 & Lê Thành Sơn\\ 
+         \hline
+         08/07/2020 &  Thêm phần 2.1 & Tô Duy Hưng\\
+         \hline
+         09/07/2020 &  Chỉnh sửa phần 1 & Lê Thành Sơn\\
+         \hline
+         10/07/2020 & Thêm phần 2.2 & Võ Hoàng Hải Nam\\
+         \hline 
+         17/07/2020 & Thêm phần 3 & Huỳnh Thị Uyên\\
+         \hline 
+         18/07/2020 & Chỉnh sửa phần 3 & Huỳnh Thị Uyên\\
+         \hline 
+         19/07/2020 & Thêm phần 4 & Võ Thanh Phong\\
+         \hline
+         20/07/2020 & Chỉnh sửa nội dung các phần 2 & Lê Thành Sơn \\
+         \hline
+         21/07/2020 & Chỉnh sửa định dạng và lỗi chính tả & Lê Thành Sơn\\
+         \hline
+         27/07/2020 & Thêm phần 1.2.1 và 1.2.2 & Tô Duy Hưng\\
+         \hline
+    \end{tabular}
+\end{table}
+
+\newpage
+\tableofcontents
+\newpage
+\listoffigures
+\newpage 
+
+\textbf{LỜI NÓI ĐẦU}
+
+Bài báo cáo này trình bày về mô hình SIR trong dự báo cho dịch bệnh Covid-19 từ các bước để xây dựng mô hình đó, từ các lý thuyết đến xây dựng mô hình bằng các cách khác nhau bằng ngôn ngữ lập trình Python. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Kiến thức và kết quả chuẩn bị}\label{chuan_bi}
+
+\subsection{Lý thuyết về mô hình SIR}\label{SIR}
+
+Trong phần này chúng tôi giới thiệu các lý thuyết về mô hình SIR, cách xây dựng mô hình SIR cho trường hợp biến rời rạc và liên tục cùng một số vấn đề liên quan đến mô hình này. 
+\subsubsection{Thiết lập mô hình SIR}
+
+Xét một dịch bệnh đang xảy ra tại một quốc gia. Chúng ta sẽ chia tập dân cư của nước đó ra thành 3 loại: có khả năng nhiễm bệnh (S), bị nhiễm bệnh (I) và đã khỏi bệnh (R). Bên cạnh đó, ta sẽ chỉ xét trong trường hợp cực kỳ tối ưu:
+\begin{enumerate}
+    \item Không một ai trong nước đó đi ra nước khác cũng như có người từ nước khác nhập cảnh vào nước đó; và dịch bệnh chỉ xảy ra trong cộng động nước đó, không xảy ra bên ngoài nước khác. Hay nói cách khác, cộng đồng đang cách ly, tổng số dân trong cộng đồng là cố định không đổi.
+    \item Mỗi người chỉ có thể thuộc một trong 3 nhóm: có khả năng nhiễm (S); đang bị nhiễm (I) và có khả năng lây bệnh cho người khác; và đã khỏi (R) gồm những người đã khỏi bệnh khoẻ mạnh và những người chết vì dịch, những người đã khỏi bệnh sẽ không mắc bệnh lại.
+    \item Ban đầu mỗi người có thể bị bệnh hoặc đã khỏi bệnh.
+    \item Một người đã mắc bệnh sẽ không thể mắc bệnh này (nghĩa là người khỏi bệnh sẽ hình thành kháng thể đặc hiệu chống lại bệnh này hoàn toàn).
+\end{enumerate}
+
+Ngoài ra, chúng ta sẽ đặt thêm một số điều kiện:
+\begin{enumerate}
+    \item Thời gian trung bình của dịch bệnh là $\eta$ tuần, trong thời gian này, một người đã nhiễm bệnh có thể lây nhiễm cho người khác, sau thời gian này sẽ được tính là đã khỏi bệnh. 
+    \item Chu kỳ mỗi lần tính là tuần.
+\end{enumerate}
+
+Khi đó mô hình này được gọi là mô hình SIR.
+
+\subsubsection{Mô hình SIR với biến rời rạc}
+\label{sec: discrete SIR}
+
+Ta định nghĩa một số hàm như sau:
+\begin{itemize}
+    \item $S(n)$: số người trong cộng đồng nghi nhiễm sau chu kỳ thứ $n$.
+    \item $I(n)$: số người bị nhiễm sau chu kỳ thứ $n$.
+    \item $R(n)$: số người đã khỏi bệnh sau chu kỳ thứ $n$.
+\end{itemize}
+Biến rời rạc chính là thời gian $n$, $n$ là các số tự nhiên.
+
+Ta sẽ bắt đầu xây dựng mô hình này. Lưu ý rằng, theo thực tế và các điều kiện của mô hình, một người nghi nhiễm có thể bị nhiễm bệnh rồi chuyển sang khỏi bệnh, không thể chuyển từ nghi nhiễm sang khỏi bệnh hay từ bị nhiễm sang nghi nhiễm hoặc ngược lại.
+
+Đầu tiên sẽ bắt đầu với hàm $R(n)$. Ta đã giả sử một người bị bệnh sẽ bị trong $\eta$ tuần, và sẽ hết bệnh sau đó. Cho nên mỗi tuần, sẽ có $1/\eta $ người đang nhiễm khỏi bệnh (theo quy tắc tam suất). Xét ở tuần thứ $n+1$, số người đã khỏi bệnh ghi nhận ở tuần thứ $n$ là $R(n)$ và sẽ có thêm $\dfrac{I(n)}{\eta}$ người khỏi bệnh mới như lập luận trên. Do đó, số người khỏi 
+bệnh được ghi nhận ở tuần thứ $n+1$ được thể hiện bởi công thức:
+\begin{align*}
+     R(n+1)=R(n)+\dfrac{I(n)}{\eta}
+\end{align*}
+Ta sẽ tiếp tục xây đựng công thức hồi quy cho $I(n)$. Theo định nghĩa, ta có nhận xét: $I(n)$ sẽ giảm mỗi tuần so với trước đó, và số lượng giảm sẽ chính là số người đã khỏi bệnh trong tuần đó, nếu xét ở tuần thứ $n$ chính là  $\dfrac{I(n)}{\eta}$ như trên.
+
+Ngoài ra, $I(n)$ còn tăng mỗi tuần so với trước đó, số lượng tăng bằng số người có khả năng nhiễm bệnh trong cộng đồng bị nhiễm mới. Như đã đặt ra ở giả thiết, chỉ người đang trong thời kỳ nhiễm bệnh mới có thể lây nhiễm cho người có khả năng nhiễm. Ngoài ra, một thực tế là không phải bất cứ ai đang nghi nhiễm cũng bị nhiễm ngay lập tức nếu tiếp xúc với người nhiễm. Do đó, ta định nghĩa thêm một hệ số $\alpha \leq 1$ để thể 
+hiện xác xuất một người nghi nhiễm có thể bị nhiễm bệnh khi tiếp xúc người bệnh. $\alpha $ thể hiện khả năng lây nhiễm của dịch bệnh, hay còn gọi là hệ số truyền nhiễm và $\alpha$ chính là một hệ số theo xác suất. Lại đặc một giả sử trong trường hợp tối ưu: $\alpha$ là không đổi theo thời gian và nó đã được xác định ngay từ ban đầu khi xảy ra dịch bệnh. Từ các định nghĩa trên, số người bị nhiễm mới trong tuần thứ $n$ sẽ là $\alpha S(n)I(n)$, trong đó $S(n)I(n)$ thể hiện việc người có khả năng nhiễm tiếp xúc với người đang nhiễm bệnh.
+
+Do đó, sau tuần thứ $n+1$, số người bị nhiễm mới sẽ được thể hiện bởi công thức:
+\begin{align*}
+    I(n+1)=I(n)-\dfrac{I(n)}{\eta}+\alpha S(n)I(n)
+\end{align*}
+
+Ta sẽ xây dựng hàm $S(n)$. Rõ ràng, số người nghi nhiễm mỗi tuần sẽ luôn luôn giảm, bởi vì cộng đồng này đang cách ly nên số người trong cộng đồng không thể thay đổi. Số người nghi nhiễm giảm mỗi tuần bằng số lượng người nhiễm mới mỗi tuần. Nếu xét tại cuối tuần $n+1$, kết hợp với các lập luận trên, số người nghi nhiễm tại tuần đó được thể hiện bởi công thức:
+\begin{align*}
+    S(n+1)=S(n)-\alpha S(n)I(n)
+\end{align*}
+Theo mô hình, ban đầu chỉ có người bệnh và người nghi nhiễm, không có người hồi phục, do đó, ta có các giá trị khởi đầu như sau: $S(0)=a, I(0)=b, R(0)=0$. Ngoài ra, do số người trong cộng đồng là cố định và không đổi nên trong mọi tuần thứ $n$, nếu gọi $N$ là tổng số dân trong cộng đồng đó, ta luôn có
+\begin{align*}
+   S(n) + I(n) + R(n) = N
+\end{align*}
+Kết hợp với các công thức thiết lập được như trên, ta có được hệ như sau:
+\label{equations: 1}
+\begin{align}
+    \begin{split}
+        & S(n+1)=S(n)-\alpha S(n)I(n) \\
+        & I(n+1)=I(n)-\dfrac{I(n)}{\eta}+\alpha S(n)I(n) \\
+        & R(n+1)=R(n)+\dfrac{I(n)}{\eta} \\
+        & S(n) + I(n) + R(n) = N \forall n \in N \\
+        & S(0)=a, I(0)=b, R(0)=0 \\
+        & n, a, b, N \in N \\
+        & \alpha, \eta > 0; \alpha \leq 1
+    \end{split}
+\end{align}
+
+Hệ trên có thể giải được và biểu diễn thành đồ thị. Với các giá trị cụ thể, ta có thể tính toán các giá trị $S,I, R$ sau các tuần.
+\subsubsection{Mô hình SIR với biến liên tục}
+\label{sec: continuous SIR}
+Trên thực tế, số lượng người nghi nhiễm (S), bị nhiễm bệnh (I) và khỏi bệnh (R) thay đổi theo thời gian thực. Do đó, ta sẽ cố gắng thể hiện các số liệu thông qua các hàm với biến liên tục.
+
+Vẫn xét mô hình SIR với các điều kiện đã được thiết lập như trong phần 1.1.1. Ta sẽ định nghĩa một số hàm như sau:
+
+\begin{itemize}
+    \item $S(t)$: số người trong cộng đồng nghi nhiễm sau thời gian $t$.
+    \item $I(t)$: số người bị nhiễm sau thời gian $t$.
+    \item $R(t)$: số người đã khỏi bệnh sau thời gian $t$.
+\end{itemize}
+
+Ngoài ra, ta có thể gọi $N$ chính là tổng số dân trong cộng đồng. Theo các giả thiết của mô hình đã đưa ra, $N$ là số tự nhiên và là hằng số.
+
+Biến liên tục ở đây chính là thời gian $t$, trong đó $t$ dương. Ta sẽ xây dựng mô hình tính toán này.
+
+\subsubsubsection{Hệ phương trình vi phân}
+
+Đầu tiên sẽ bắt đầu với hàm $R(t)$. Ta đã giả sử một người bị bệnh sẽ bị trong $\eta$ tuần, và sẽ hết bệnh sau đó. Cho nên mỗi tuần, sẽ có $1/\eta $ người đang nhiễm khỏi bệnh (theo quy tắc tam suất).
+Để đánh giá được độ thay đổi của hàm số $R(t)$ theo thời gian $t$, ta sử dụng khái niệm đạo hàm. Xét số người khỏi bệnh tại 2 thời điểm $t$ và $t +\delta t$. Theo quy tắc tam suất, kết hợp với lập luân như trên, số người khỏi bệnh tại thời điểm $t+ \delta t$ sẽ tăng thêm $\delta t.\dfrac{I(t)}{\eta}$ so với thời điểm $t$ trước đó. Cho nên $R(t+\delta t) = R(t) +\delta t.\dfrac{I(t)}{\eta}$. Khi đó, 
+ta sẽ có: 
+\begin{align*}
+    \dfrac{R(t + \delta t) - R(t)}{\delta t} = \dfrac {R(t) +\delta t.\dfrac{I(t)}{\eta} - R(t)}{\delta t} = \dfrac{I(t)}{\eta}
+\end{align*}
+Cho nên:
+\begin{align*}
+    \lim_{\delta t\rightarrow +\infty} \dfrac{R(t + \delta t) - R(t)}{\delta t} = \dfrac{I(t)}{\eta}
+\end{align*}
+Hay: 
+\begin{align*}
+    \dfrac{dR}{dt} = \dfrac{I(t)}{\eta}
+\end{align*}
+
+Giá trị $\dfrac{1}{\eta}$ được định nghĩa là tỉ lệ khỏi bệnh mỗi tuần. Giá trị này thể hiện tỉ lệ người khỏi bệnh mỗi tuần và có thể tính toán từ các dữ liệu thực. 
+
+Ta sẽ tiếp tục xây đựng công thức cho $I(t)$. Theo định nghĩa, ta có nhận xét: $I(t)$ sẽ giảm mỗi tuần so với trước đó, và số lượng giảm sẽ chính là số người đã khỏi bệnh trong tuần đó, nếu xét ở thời gian $t$ chính là  $\dfrac{I(t)}{\eta}$ như trên. Ngoài ra, $I(t)$ còn tăng so với trước đó, số lượng tăng bằng số người có khả năng nhiễm bệnh trong cộng đồng bị nhiễm mới. Như đã đặt ra ở giả thiết, chỉ người đang trong thời kỳ nhiễm bệnh mới có thể lây nhiễm cho người có khả năng nhiễm. Ngoài ra, một thực tế là không phải bất cứ ai đang nghi nhiễm cũng bị nhiễm ngay lập tức nếu tiếp xúc với người nhiễm. Do đó, ta định nghĩa thêm một hệ số $\alpha \leq 1$ để thể 
+hiện xác xuất một người nghi nhiễm có thể bị nhiễm bệnh khi tiếp xúc người bệnh. $\alpha $ thể hiện khả năng lây nhiễm của dịch bệnh, hay còn gọi là hệ số truyền nhiễm và $\alpha$ chính là một hệ số theo xác suất. Lại đặc một giả sử trong trường hợp tối ưu: $\alpha$ là không đổi theo thời gian và nó đã được xác định ngay từ ban đầu khi xảy ra dịch bệnh. Từ các định nghĩa trên, số người bị nhiễm mới 
+sau thời gian $t$ sẽ là $\alpha S(t)I(t)$, trong đó $S(t)I(t)$ thể hiện việc người có khả năng nhiễm tiếp xúc với người đang nhiễm bệnh. Xét số người khỏi bệnh tại 2 thời điểm $t$ và $t +\delta t$. Từ các lập luận trên, theo quy tắc tam suất. ta có được:
+\begin{align*}
+    I(t+\delta t) = I(t) + (- \dfrac{I(t)}{\eta} + \alpha S(t)I(t))).\delta t
+\end{align*}
+Cho nên: 
+\begin{align*}
+    \dfrac{I(t+\delta t)-I(t)}{\delta t} =\dfrac {I(t) + (- \dfrac{I(t)}{\eta} + \alpha S(t)I(t))).\delta t - I(t) }{\delta t} = - \dfrac{I(t)}{\eta} + \alpha S(t)I(t)
+\end{align*}
+Từ đó ta có được: 
+\begin{align*}
+    \lim_{\delta t\rightarrow +\infty}\dfrac{I(t+\delta t)-I(t)}{\delta t} = - \dfrac{I(t)}{\eta} + \alpha S(t)I(t)
+\end{align*}
+Hay:
+\begin{align*}
+    \dfrac{dI}{dt} = - \dfrac{I(t)}{\eta} + \alpha S(t)I(t)
+\end{align*}
+
+Cuối cùng ta thực hiện xây dựng công thức cho hàm $S(t)$. Rõ ràng, số người nghi nhiễm mỗi tuần sẽ luôn luôn giảm, bởi vì cộng đồng này đang cách ly nên số người trong cộng đồng không thể thay đổi. Số người nghi nhiễm giảm mỗi tuần bằng số lượng người nhiễm mới mỗi tuần. Nếu xét tại 2 thời điểm $t$ và $t+\delta t$, kết hợp với các lập luận trên, số người nghi nhiễm tại thời điểm đó được thể hiện bởi công thức: 
+\begin{align*}
+    S(t+ \delta t)=S(t)-\alpha S(t)I(t).\delta t
+\end{align*}
+Từ đó ta có được: 
+\begin{align*}
+    \dfrac{S(t+\delta t)-S(t)}{\delta t} =\dfrac {S(t) + -\alpha S(t)I(t).\delta t - S(t) }{\delta t} = -\alpha S(t)I(t)
+\end{align*}
+Cho nên:
+\begin{align*}
+    \lim_{\delta t\rightarrow +\infty}\dfrac{S(t+\delta t)-S(t)}{\delta t} = -\alpha S(t)I(t)
+\end{align*}
+Hay: 
+\begin{align*}
+    \dfrac{dS}{dt} = -\alpha S(t)I(t)
+\end{align*}
+Theo mô hình, ban đầu chỉ có người bệnh và người nghi nhiễm, không có người hồi phục, do đó, ta có các giá trị khởi đầu như sau: $S(0)=a, I(0)=b, R(0)=0$. Ngoài ra, do cộng đồng đang cách ly nên dân số không không đổi tại mọi thời điểm $t$, do đó, ta có:
+\begin{align*}
+    S(t) + I(t) + R(t) = N
+\end{align*}
+Kết hợp với các công thức thiết lập được như trên, với một $N$ đủ lớn, ta có được hệ như sau:
+\label{equations: 2}
+\begin{align}
+    \begin{split}
+        & \dfrac{dR}{dt} = \dfrac{I(t)}{\eta} \\
+        & \dfrac{dI}{dt} = - \dfrac{I(t)}{\eta} +  \alpha S(t)I(t) \\
+        & \dfrac{dS}{dt} = -\alpha S(t)I(t) \\
+        & S(t) + I(t) + R(t) = N  \forall t \in R^{+} \\
+        & S(0)=a, I(0)=b, R(0)=0 \\
+        & a, b \in N \\
+        & \alpha, \eta > 0; \alpha \leq 1
+    \end{split}
+\end{align}
+
+Hệ trên là một hệ phương trình vi phân có thể giải được và biểu diễn bằng đồ thị.
+
+\subsection{Một số vấn đề liên quan đến mô hình SIR}
+
+\subsubsection{Trạng thái cân bằng}
+
+Xét mô hình SIR liên tục. Trạng thái ($S$,$I$,$R$) được gọi là trạng thái cân bằng của hệ SIR nếu
+\begin{align}
+    \dfrac{dS(t)}{dt} = \dfrac{dI(t)}{dt} = \dfrac{dR(t)}{dt} = 0,\forall t \geq 0
+\end{align}
+
+Từ hệ $(2)$ và $(3)$, ta có được:
+\begin{align}
+    -\alpha S(t)I(t) = - \dfrac{I(t)}{\eta} +  \alpha S(t)I(t) = \dfrac{I(t)}{\eta}  = 0,\forall t \geq 0
+\end{align}
+
+Biểu thức trên có nghiệm khi $\dfrac{I(t)}{\eta} = 0,\forall t \geq 0$, hay $I(t) = 0,\forall t \geq 0$. Kiểm tra lại thấy kết quả này thỏa mãn các phương trình còn lại và là nghiệm duy nhất thỏa mãn hệ $(4)$.
+
+Vậy, mô hình SIR đạt trạng thái cân bằng khi và chỉ khi không có người nào mắc bệnh.
+
+\subsubsection{Hệ động lực tuyến tính}
+
+\begin{itemize}
+
+    \item Cơ sở lý thuyết: Cho hai hàm số thực $f$ và $g$ phụ thuộc vào hai biến $x, y \in \mathbb{R}$. Gọi $(x_*,y_*)$ là nghiệm của các phương trình $f(x,y)=g(x,y)=0$. Sự \textbf{tuyến tính hóa hệ động lực}
+    \begin{align*}
+        \dfrac{dx}{dt} &= f(x,y) \\
+        \dfrac{dy}{dt} &= g(x,y)
+    \end{align*}
+
+    \textbf{xung quanh điểm} $(x_*,y_*)$ cho bởi hệ động lực tuyến tính
+    \begin{align*}
+        \dfrac{dx}{dt} &= f_x(x_*,y_*)x + f_y(x_*,y_*)y \\
+        \dfrac{dy}{dt} &= g_x(x_*,y_*)x + g_y(x_*,y_*)y
+    \end{align*}
+
+    trong đó $f_x$ là đạo hàm riêng của hàm $f$ theo biến $x$.
+
+    \item Vận dụng: Xét hệ tuyến tính hóa cho hệ SIR liên tục (chỉ xét hai phương trình cho S và I)
+    \begin{align*}
+        \dfrac{dS}{dt} &= f(S,I) = -\alpha S(t)I(t)\\
+        \dfrac{dI}{dt} &= g(S,I) = - \dfrac{I(t)}{\eta} +  \alpha S(t)I(t)
+    \end{align*}
+
+    xung quanh điểm $(S(0),I(0)) = (N,0)$ với $N$ là tổng số dân trong cộng đồng và $N$ là hằng số. Khi đó, ta có được hệ động lực tuyến tính cho hai hàm S và I lần lượt là
+    \begin{align*}
+            \dfrac{dS}{dt} &= f_S(S(0),I(0))S(t) + f_I(S(0),I(0))I(t) \\
+            \dfrac{dI}{dt} &= g_S(S(0),I(0))S(t) + g_I(S(0),I(0))I(t)
+    \end{align*}
+    
+    Cho nên:
+    \begin{align*}
+            \dfrac{dS}{dt} &= -\alpha I(0)S(t) -\alpha S(0)I(t) \\
+            \dfrac{dI}{dt} &= \alpha I(0)S(t) + (- \dfrac{1}{\eta} +  \alpha S(0))I(t)
+    \end{align*}
+    
+    Hay:
+    \begin{align}
+            \dfrac{dS}{dt} &= -\alpha NI(t) \\
+            \dfrac{dI}{dt} &= (- \dfrac{1}{\eta} +  \alpha N)I(t)
+    \end{align}
+    
+    Từ đó, với những giả thiết giúp xây dựng được hệ động lực tuyến tính như trên, ta có thể tính toán được nghiệm chính xác của S và I theo biến thời gian $t \geq 0$. Đầu tiên, từ phương trình vi phân $(6)$, ta suy ra được:
+    \begin{align*}
+            \dfrac{dI}{I(t)} = (- \dfrac{1}{\eta} +  \alpha N)dt
+    \end{align*}
+    
+    Lấy nguyên hàm 2 vế, ta được:
+    \begin{align*}
+            ln(I(t)) = (- \dfrac{1}{\eta} +  \alpha N)t + C
+    \end{align*}
+    
+    Hay:
+    \begin{align*}
+            I(t) = Ce^{(- \dfrac{1}{\eta} +  \alpha N)t}
+    \end{align*}
+    
+    Với $t = 0$, ta có $I(t) = C = I(0)$. Khi đó, nghiệm chính xác của I là $ I(t) = I(0)e^{(- \dfrac{1}{\eta} +  \alpha N)t}$. Kết quả này giúp ta đánh giá được tốc độ nhiễm bệnh sẽ tăng nhanh theo tốc độ hàm mũ khi $\dfrac{-1}{\eta} + \alpha N > 0$, tương đương khi hệ số $R_0 = \dfrac{\alpha N}{\dfrac{1}{\eta}} > 1$
+    
+    Sau đó thay nghiệm I vừa tìm được vào phương trình vi phân $(5)$, ta suy ra được:
+    \begin{align*}
+            dS = -\alpha NI(0)e^{(- \dfrac{1}{\eta} +  \alpha N)t}dt \\
+    \end{align*}
+    
+    Lấy nguyên hàm 2 vế, ta được:
+    \begin{align*}
+            S(t) = \dfrac{-\alpha NI(0)e^{(- \dfrac{1}{\eta} +  \alpha N)t}}{- \dfrac{1}{\eta} +  \alpha N} + C \\
+    \end{align*}
+    
+    Với $t = 0$, ta có $S(t) = \dfrac{-\alpha NI(0)}{- \dfrac{1}{\eta} +  \alpha N} + C = S(0)$. Khi đó, nghiệm chính xác của S là $S(t) = \dfrac{-\alpha NI(0)e^{(- \dfrac{1}{\eta} +  \alpha N)t}}{- \dfrac{1}{\eta} +  \alpha N} + S(0) + \dfrac{\alpha NI(0)}{- \dfrac{1}{\eta} +  \alpha N}$
+\end{itemize}
+
+\subsubsection{Tổng quát hơn nữa hệ liên tục đã xây dựng}
+
+Trong phần \hyperref[sec: discrete SIR]{1.1.2} và \hyperref[sec: continuous SIR]{1.1.3}, ta đã xây dựng mô hình SIR với biến $t$ liên tục và biểu diễn dưới dạng các công thức. Ta sẽ tiếp tục sử dụng các ký tự với ý nghĩa như đã trình bày trong phần trước đó. Trong các hệ \hyperref[equations: 1]{$(1)$} và \hyperref[equations: 2]{$(2)$}, ta có giả sử rằng các hằng số $\eta$ định nghĩa thời gian đo được kể từ lúc một người mắc bệnh cho đến khi được cho là "khỏi bệnh" và từ đó $\gamma = \dfrac{1}{\eta}$ định nghĩa tỷ lệ người khỏi bệnh mỗi tuần; $\alpha$ thể hiện xác suất một người có thể bị nhiễm khi 
+tiếp xúc với một người bệnh. 
+
+Với định nghĩa của $\alpha$ có thể hiểu là xác xuất trung bình một người khoẻ mạnh bị nhiễm bệnh, và do đó, nếu gọi $\beta$ là ước lượng số tiếp xúc của người trong nhóm S với người trong nhóm I thì $\alpha$ có thể được tính bởi $\alpha = \dfrac{\beta}{N}$.
+
+Một điều có thể dễ dàng nhận thấy là ta đều giả sử $\eta$, $\alpha$ hay $N$ đều là các hằng số trong suốt thời gian dịch bệnh trong các mô hình trên. Tuy nhiên, trên thực tế, các con số này có thể thay đổi theo thời gian dựa theo tình hình của cộng đồng đó và mức độ của dịch bệnh. Do đó, bên cạnh các hàm $S(t)$, $I(t)$, $R(t)$ như định nghĩa trong phần \hyperref[sec: continuous SIR]{1.1.3}, ta định nghĩa thêm một số hàm như sau:
+\begin{itemize}
+    \item $\eta(t)$: thời gian từ lúc một người bị bệnh cho đến lúc người đó được cho là "khỏi bệnh" tính toán được tại thời điểm $t$.
+    \item $\gamma(t)$: tỷ lệ hồi phục khi mắc bệnh được tính toán tại thời điểm $t$.
+    \item $\alpha(t)$: xác xuất trung bình một người khoẻ mạnh bị nhiễm bệnh được tính toán tại thời điểm $t$.
+    \item $\beta(t)$: ước lượng tiếp xúc của người trong nhóm $S(t)$ với người trong nhóm $I(t)$ tại thời điểm $t$.
+    \item $N(t)$: dân số trong cộng đồng đang xét tại thời điểm $t$.
+\end{itemize}
+
+Tương tự như khi là hằng số, ta cũng có một số quan hệ giữa 5 hàm số trên như $\gamma(t)=\dfrac{1}{\eta(t)}$ và $\alpha(t)=\dfrac{\beta(t)}{N(t)}$. 
+
+Một điều có thể được để ý nữa đó chính là với các lập luận tương tự như trong phần \hyperref[sec: continuous SIR]{1.1.3}, các kết quả nhận được sẽ không thay đổi nếu ta xét với $\alpha$, $\eta$ là các hàm số theo biến $t$. Do đó, với những suy luận tương tự, ta có thể viết lại hệ \hyperref[equations: 2]{$(2)$} như sau:
+\begin{align*}
+    & \dfrac{dR}{dt} = \dfrac{I(t)}{\eta(t)} \\
+    & \dfrac{dI}{dt} = - \dfrac{I(t)}{\eta(t)} +  \alpha(t)S(t)I(t) \\
+    & \dfrac{dS}{dt} = -\alpha(t)S(t)I(t) \\
+    & S(t) + I(t) + R(t) = N(t)  \forall t \in R^{+} \\
+    & S(0)=a, I(0)=b, R(0)=0 \\
+    & a, b \in N \\
+    & \alpha(t), \eta(t) > 0; \alpha(t) \leq 1 \forall t \in R^{+} 
+\end{align*}
+
+Hay:
+\begin{align}
+    \begin{split}
+        & \dfrac{dR}{dt} = \gamma(t)I(t) \\
+        & \dfrac{dI}{dt} = - \dfrac{I(t)}{\eta(t)} +  \dfrac{\beta(t)}{N(t)}S(t)I(t) \\
+        & \dfrac{dS}{dt} = -\dfrac{\beta(t)}{N(t)}S(t)I(t) \\
+        & S(t) + I(t) + R(t) = N(t)  \forall t \in R^{+} \\
+        & S(0)=a, I(0)=b, R(0)=0 \\
+        & a, b \in N \\
+        & \gamma(t), \beta(t), N(t) > 0 \forall t \in R^{+} 
+    \end{split}
+\end{align}
+
+Với các hàm đã được định nghĩa như trên.
+\subsubsection{Hệ số lây nhiễm cơ bản $R_0$}
+Một trong những đại lượng quan trọng nhất trong các mô hình dịch bệnh là hệ số lây nhiễm cơ bản, hay còn gọi là "hệ số $R_0$". Xét trong hệ \hyperref[equations: 2]{$(2)$}, $R_0$ có thể được tính như sau: $R_0 = \alpha  \eta $. Trong đó, $\alpha $ thể hiện số người khoẻ mạnh trung bình mà một người mắc bệnh có thể bị lây trong thời gian nhiễm bệnh $\eta$. Tại một thời điểm, dịch bệnh sẽ được coi là dập tắt nếu $R_0 < 1$, nếu $R_0>1$ thì dịch 
+vẫn đang bùng phát. Điều này có thể thấy tương đối đúng bằng trực giác: nếu một người bệnh lây cho nhiều hơn một người thì số người bị bệnh sẽ tăng lên (theo cấp số nhân) và dịch bệnh bùng; còn nếu một người bị bệnh lây ít hơn cho một người bệnh khác thì số người bị bệnh đang giảm và dịch đang tắt. 
+
+\subsubsection{Mô hình SIRD}
+
+Một điểm hạn chế của mô hình SIR đó chính là ta đã gộp số người chết và số người hồi phục vào nhóm R. Do đó, nếu ta muốn tính toán số người chết hoặc khỏi bệnh nhưng không chết, ta cần mở rộng mô hình SIR đã tính toán.
+
+Với các định nghĩa $S(t), I(t)$ của mô hình SIR như đã trình bày ở \hyperref[sec: continuous SIR]{1.1.3}, ta định nghĩa thêm hàm $D(t)$ thể hiện số người chết sau thời gian $t$, đồng thời $R(t)$ chỉ thể hiện số người hồi phục tại thời điểm $t$, không bao gồm người chết như xây dựng trên.
+
+Gọi, $N$ là tổng số dân của cộng đồng; $\gamma = \dfrac{1}{\eta}$ là tỉ lệ hồi phục; $\beta$ là ước lượng số tiếp xúc của người trong nhóm S với người trong nhóm I thì $\alpha$ có thể được tính bởi $\alpha = \dfrac{\beta}{N}$. Như đã lập luận trong phần 1.1.3, ta sẽ có: 
+\begin{align*}
+   S(t) + I(t) + R(t) + D(t) = N \forall t \in R^{+}
+\end{align*}
+
+\begin{align*}
+    \dfrac{dR}{dt} = \dfrac{I(t)}{\eta} = \gamma I(t)
+\end{align*}
+
+Và: 
+\begin{align*}
+    \dfrac{dS}{dt} = -\alpha S(t)I(t) = \dfrac{\beta}{N} S(t)I(t)
+\end{align*}
+
+Ta xây dựng hàm $D(t)$. Gọi khả năng một người không hồi phục được (chết) là $\mu$, hay còn gọi là gọi là tỷ lệ tử vong.
+
+Xét số người chết tại 2 thời điểm $t$ và $t +\delta t$. Theo quy tắc tam suất, kết hợp với lập luân như trên, số người chết tại thời điểm $t+ \delta t$ sẽ tăng thêm $\delta t I(t) \mu$ so với thời điểm $t$ trước đó. Cho nên $R(t+\delta t) = R(t) +\delta t \mu I(t) $. Khi đó:
+\begin{align*}
+    \dfrac{D(t + \delta t) - D(t)}{\delta t} = \dfrac {D(t) +\delta t \mu I(t) - R(t)}{\delta t} = \mu I(t)
+\end{align*}
+Cho nên:
+\begin{align*}
+    \lim_{\delta t\rightarrow +\infty} \dfrac{D(t + \delta t) - D(t)}{\delta t} = \mu I(t)
+\end{align*}
+Hay: 
+\begin{align*}
+    \dfrac{dD}{dt} = \mu I(t)
+\end{align*}
+
+Lại để ý một điều nữa, số người nhiễm mới tại thời điểm $t$ sẻ giảm một lượng bằng tổng số người chết và hồi phục tại thời điểm $t$. Từ các nhận xét trên, ta có thể thay thế phương trình 2 của hệ \hyperref[equations: 2]{$(2)$} 
+trong trường hợp này thành:
+\begin{align*}
+    \dfrac{dI}{dt} = \alpha S(t)I(t) - \mu I(t) - \gamma I(t) =  \dfrac{\beta}{N} S(t)I(t) - \mu I(t) - \gamma I(t)
+\end{align*}
+
+Kết hợp lại các công thức đã thiết lập, ta được hệ:
+\label{equations: 4}
+\begin{align}
+    \begin{split}
+        & \dfrac{dS}{dt} = - \dfrac{\beta}{N} S(t)I(t) \\
+        & \dfrac{dI}{dt} =  \dfrac{\beta}{N} S(t)I(t) - \mu I(t) - \gamma I(t) \\
+        & \dfrac{dR}{dt} = \gamma I(t) \\
+        &  \dfrac{dD}{dt} = \mu I(t) \\
+        & S(t) + I(t) + R(t) + R(t) = N  \forall t \in R^{+} \\
+        & S(0)=a, I(0)=b, R(0)=0, R(t) = 0 \\
+        & a, b \in N \\
+        & \beta, \gamma, \mu, N > 0 
+    \end{split}
+\end{align}
+Hệ trên là mô hình SIRD mở rộng của SIR, các giá trị của các hàm số tại thời điểm $t$ có thể tính được nếu biết giá trị của chúng tại một thời điểm $t_0$ trước đó.
+
+Hệ số lây nhiễm cơ sở $R_0$ trong hệ SIRD có thể được xác định bởi công thức $R_0 = \dfrac{\beta}{\gamma+\mu}$. 
+
+\subsubsection{Một số mô hình khác}
+Bên cạnh mô hình SIR hay SIRD, tuỳ vào các điều kiện được đưa vào xem xét trong mô hình như miễn dịch tự nhiên, ủ bệnh, khả năng tái nhiễm bệnh,... mà người ta có thể đưa ra các mô hình khác như SIS, SEIR, SIRS
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Xây dựng chương trình sử dụng thuật toán Euler tìm nghiệm của hệ SIR }
+\subsection{Phương pháp Euler}
+\subsubsection{Tổng quan lý thuyết}
+Xét bài toán: 
+\begin{align}\label{Cauchy}
+    \begin{cases}
+       y'(t) = f(t,y(t)), a \leq t \leq b \\
+       y(a) = y_0
+    \end{cases}
+\end{align}
+Hàm $y(t)$ khả vi trên đoạn $[a;b]$, $y_0$ là giá trị ban đầu cho trước của $y(t)$ tại $t=a$. Bài toán trên được gọi là bài toán Cauchy.
+
+Đối với bài toán Cauchy, ta chỉ có thể tìm được nghiệm gần đúng của một số phương trình đơn giản, còn đối với trường hợp hàm $f(t, y(t))$ được cho ở dạng bất kỳ, nói chung là không có phương pháp giải, ngoài ra một số nghiệm giải được tương đối phức tạp. Cho nên việc tính gần đúng các giá trị có vai trò tương đối quan trọng. 
+
+Phương pháp Euler có thể được dùng để xấp xỉ giá trị của hàm $y(t)$ bằng dãy $\{ y(t_n)\} $ thoả:
+\begin{align}\label{Cauchy}
+    \begin{cases}
+        y(t_0) = y_0 \\
+        y(t_{k+1}) = y(t_k)+ hf(t_k,y(t_k)), k=0,1,...,n-1  \\
+    \end{cases}
+\end{align}
+
+Tham số $h$ có thể được xây dựng bới công thức $h=\dfrac{b-a}{n}$ trong đó $n$ là số đoạn nhỏ bằng nhau trong đoạn $[a;b]$. 
+
+Phương pháp trên còn có thể mở rộng cho hệ các phương trình vi phân với công thức tương tự.
+
+\subsubsection{Thực hiện}\label{sec: 2.1.2}
+Cho bài toán: Dùng mô hình SIR để miêu tả một loại cúm trong một cộng đồng có các đặc điểm được quan sát như sau:
+\begin{itemize}
+    \item Cộng đồng này đang bị cách ly, không ai được ra vào.
+    \item Loại cúm này có thời gian từ khi phát bệnh cho đến khi hồi phục là $\eta$ tuần không đổi theo thời gian.
+    \item Một người khi mắc bệnh và hồi phục thì không còn mắc bệnh này lần thứ 2.
+    \item Sau một thời gian điều tra, tỷ lệ mắc bệnh khi có tiếp xúc với người bệnh ở mức $\alpha$ sau một tuần tiếp xúc và giả sử tỷ lệ này cũng không đổi theo thời gian.
+    \item Tại thời điểm ban đầu, số người có khả năng nhiễm bệnh là $a$ người, số người mắc bệnh là $b$ người và số ca hồi phục khi ấy không có.
+\end{itemize}
+
+Sử dụng các ký hiệu và các công thức như đã trình bày ở phần \hyperref[SIR]{1}, ta được mô hình: 
+\begin{align*}
+    \begin{split}
+        & \dfrac{dS}{dt} = -\alpha S(t)I(t) = -\dfrac{\beta}{N} S(t)I(t) \\
+        & \dfrac{dI}{dt} = - \dfrac{I(t)}{\eta} +  \alpha S(t)I(t) = \dfrac{\beta}{N} S(t)I(t) - \gamma I(t) \\
+        & \dfrac{dR}{dt} = \dfrac{I(t)}{\eta} = \gamma I(t)\\
+        & S(t) + I(t) + R(t) = N  \forall t \in R^{+} \\
+        & S(0)=a, I(0)=b, R(0)=0 \\
+        & a, b \in N \\
+    \end{split}
+\end{align*}
+
+
+Ta hiện thực chương trình giải quyết bài toán trên bằng Python. Nội dung chi tiết hiện thực của thuật toán nằm trong file Euler\_method\_SIR.ipynb được đính kèm. Phần hiện thực công thức Euler được cho như dưới đây.\\
+\begin{lstlisting}[language=Python]
+    for step in range(1, self.eons):
+        S_to_I = (self.rateSI * Suspectible[-1] * Infectious[-1]) / self.numIndividuals
+        I_to_R = Infectious[-1] * self.rateIR
+        Suspectible.append(Suspectible[-1] - self.h*S_to_I)
+        Infectious.append(Infectious[-1] + self.h*(S_to_I - I_to_R))
+        Recovered.append(Recovered[-1] + self.h*I_to_R)
+\end{lstlisting}
+
+Kết quả ở một số trường hợp có thể được thể hiện ở các hình dưới đây (nhóm chọn đơn vị là ngày). 
+
+Với các tham số $t$, $\beta$, $\gamma$, $S(t_0)$, $I(t_0)$ nhập vào ban đầu lần lượt là 60, 1.43, 0.33, 50 000 000, 40, ta được kết quả như hình dưới, trong đó, kết quả ước tính ở ngày thứ 60 của $S, I, R$ lần lượt là 109428.3482, 4.2857, 49890607.3661.
+\begin{figure}[ht]
+    \subfloat[Các giá trị tính toán được trong các ngày]
+      {\includegraphics[width=.5\linewidth]{Section2/res_SIR_1.png}}
+    \subfloat[Phác hoạ kết quả thành đồ thị]
+      {\includegraphics[width=.5\linewidth]{Section2/plot_SIR_1.png}}
+    \newline
+    \newline
+    \label{pic: test_SIR_1}
+    \caption{Kết quả tính toán và phác hoạ đồ thị}
+\end{figure}
+
+Với các tham số $t$, $\beta$, $\gamma$, $S(t_0)$, $I(t_0)$ nhập vào ban đầu lần lượt là 180, 0.156, 0.004, 87 000 000, 2000 ta được kết quả như hình dưới, trong đó, kết quả ước tính ở ngày thứ 180 của $S, I, R$ lần lượt là 57.7249, 57181583.8143, 29820358.4608.
+\begin{figure}[ht]
+    \subfloat[Các giá trị tính toán được trong các ngày]
+      {\includegraphics[width=.5\linewidth]{Section2/res_SIR_2.png}}
+    \subfloat[Phác hoạ kết quả thành đồ thị]
+      {\includegraphics[width=.5\linewidth]{Section2/plot_SIR_2.png}}
+    \newline
+    \newline
+    \label{pic: test_SIR_1}
+    \caption{Kết quả tính toán và phác hoạ đồ thị}
+\end{figure}
+
+Với các tham số $t$, $\beta$, $\gamma$, $S(t_0)$, $I(t_0)$ nhập vào ban đầu lần lượt là 180, 0.4, 0.25, 87 000 000, 2000 ta được kết quả như hình dưới, trong đó, kết quả ước tính ở ngày thứ 180 của $S, I, R$ lần lượt là 30303676.0952, 56.9696, 56698266.9352.
+\begin{figure}[ht]
+    \subfloat[Các giá trị tính toán được trong các ngày]
+      {\includegraphics[width=.5\linewidth]{Section2/res_SIR_3.png}}
+    \subfloat[Phác hoạ kết quả thành đồ thị]
+      {\includegraphics[width=.5\linewidth]{Section2/plot_SIR_3.png}}
+    \newline
+    \newline
+    \label{pic: test_SIR_1}
+    \caption{Kết quả tính toán và phác hoạ đồ thị}
+\end{figure}
+
+Các ví dụ trên có thể thể hiện các loại dịch bệnh khác nhau. Trong đó, ví dụ 1 thể hiện một loại bệnh nhẹ và dễ lây lan, dịch bệnh sẽ kết thúc khi mọi người trong cộng đồng đều nhiễm; ví dụ 2 thể hiện một dịch bệnh tương đối mạnh, khó khỏi và kéo dài rất lâu; ví dụ 3 thể hiện một loại bệnh bình thường, nó sẽ kết thúc khi một số lượng người bị nhiễm khỏi tạo nên miễn dịch bảo vệ các người khác (miễn dịch cộng đồng).
+
+\newpage
+\subsection{Phương pháp Runge-Kutta}
+
+Nhược điểm của phương pháp Euler là bậc của độ chính xác giảm dần. Muốn có độ chính xác cao đời hỏi h phải rất nhỏ, điều này sẽ tăng thời gian tính toán lên cao - tăng độ phức tạp của giải thuật.\\
+Phương pháp Runge-Kutta giải quyết được tình trạng này bằng cách sử dụng các điểm trung gian giữa các bước lặp (khai triển Taylor nghiệm y(x) tại $x_{i}$ tại nhiều số hạng hơn). Trong thực tế, người ta sẽ dùng công thức Runge-Kutta bậc 4 vì nó có độ chính xác cao mà lại không quá phức tạp.
+
+Công thức Runge-Kutta tổng quát:
+\begin{center}
+    $y_{t+h}=y_{t}+h\cdot \sum _{i=1}^{s}a_{i}k_{i}+{\mathcal {O}}(h^{s+1})$\\~\\
+\end{center}
+
+Khi bỏ qua ${\mathcal {O}}(h^{5})$, ta thu được công thức Runge-Kutta bậc 4:
+\begin{itemize}
+    \item $y_0 = y(x_0)$
+    \item $k_1^{(i)} = hf(x_i, y_i)$
+    \item $k_2^{(i)} = hf(x_i + \dfrac{h}{2}, y_i + \dfrac{k_1^{(i)}}{2})$
+    \item $k_3^{(i)} = hf(x_i + \dfrac{h}{2}, y_i + \dfrac{k_2^{(i)}}{2})$
+    \item $k_4^{(i)} = hf(x_i + \dfrac{h}{2}, y_i + k_3^{(i)})$
+    \item $y_{i+1} = y_i +\dfrac{1}{6}( k_1^{(i)} + 2k_2^{(i)} + 2k_3^{(i)} + k_4^{(i)})   i=0,1,...,n-1$
+\end{itemize}
+
+Hiện thực chương trình Runge-Kutta bậc 4 bằng Python.
+\begin{lstlisting}[language=Python]
+     for i in range(1, self.eons):
+        Si = Suspectible[-1]
+        Ii = Infectious[-1]
+        
+        Sk1 = self.dSdt(Si, Ii)
+        Ik1 = self.dIdt(Si, Ii)
+            
+        Sk2 = self.dSdt(Si + self.dt * Sk1/2 , Ii + self.dt * Ik1/2)
+        Ik2 = self.dIdt(Si + self.dt * Sk1/2 , Ii + self.dt * Ik1/2)
+            
+        Sk3 = self.dSdt(Si + self.dt * Sk2/2 , Ii + self.dt * Ik2/2)
+        Ik3 = self.dIdt(Si + self.dt * Sk2/2 , Ii + self.dt * Ik2/2)
+           
+        Sk4 = self.dSdt(Si + self.dt * Sk3, Ii + self.dt * Ik3)
+        Ik4 = self.dIdt(Si + self.dt * Sk3, Ii + self.dt * Ik3)
+           
+        nextSi = Si + self.dt * (Sk1+2*Sk2+2*Sk3+Sk4)/6
+        nextIi = Ii + self.dt * (Ik1+2*Ik2+2*Ik3+Ik4)/6
+        nextRi = self.numIndividuals - nextSi - nextIi
+\end{lstlisting}
+
+Hiện thực chi tiết nằm trong file RK4\_method.ipynb. Kết quả khi thử với các ví dụ như trong phần \hyperref[sec: 2.1.2]{2.1.2}
+
+\texttt{Day: 60}
+
+\texttt{Suspectible: S = 50 000 000 people}
+
+\texttt{Infectious: I = 40 people}
+
+\texttt{Recovered: R = 0}
+
+\texttt{Rate of the suspectible contact with the infectious: $\beta$ = 1.43}
+
+\texttt{Rate of the recovered from the infectious: $\gamma$ = 0.33}
+
+Giá trị ước lượng tại thời gian nhập vào của $S,I,R$ lần lượt là 698903.117, 24.0122 và 49301112.8708.
+\begin{figure}[ht]
+    \centering
+    \subfloat[Các giá trị tính toán được trong các ngày]
+      {\includegraphics[width=.7\linewidth]{Section2/res_RK4_1.png}}
+    \newline
+    \subfloat[Phác hoạ kết quả thành đồ thị]
+      {\includegraphics[width=\linewidth]{Section2/plot_RK4_1.png}}
+    \newline
+    \newline
+    \label{pic: test_SIR_1}
+    \caption{Kết quả tính toán và đồ thị so sánh với phương pháp Euler trong cùng trường hợp}
+\end{figure}
+
+\newpage
+\texttt{Day: 180}
+
+\texttt{Suspectible: S = 87 000 000 people}
+
+\texttt{Infectious: I = 2000 people}
+
+\texttt{Recovered: R = 0}
+
+\texttt{Rate of the suspectible contact with the infectious: $\beta$ = 0.156}
+
+\texttt{Rate of the recovered from the infectious: $\gamma$ = 0.004}
+
+Giá trị ước lượng tại thời gian nhập vào của $S,I,R$ lần lượt là 86.1752, 56160676.5129 và 30841237.3119.
+\begin{figure}[ht]
+    \centering
+    \subfloat[Các giá trị tính toán được trong các ngày]
+      {\includegraphics[width=.7\linewidth]{Section2/res_RK4_2.png}}
+    \newpage
+    \subfloat[Phác hoạ kết quả thành đồ thị]
+      {\includegraphics[width=\linewidth]{Section2/plot_RK4_2.png}}
+    \newline
+    \newline
+    \label{pic: test_SIR_1}
+    \caption{Kết quả tính toán và đồ thị so sánh với phương pháp Euler trong cùng trường hợp}
+\end{figure}
+
+\newpage
+\texttt{Day: 180}
+
+\texttt{Suspectible: S = 87 000 000 people}
+
+\texttt{Infectious: I = 2000 people}
+
+\texttt{Recovered: R = 0}
+
+\texttt{Rate of the suspectible contact with the infectious: $\beta$ = 0.4}
+
+\texttt{Rate of the recovered from the infectious: $\gamma$ = 0.25}
+
+Giá trị ước lượng tại thời gian nhập vào của $S,I,R$ lần lượt là31146807.9348, 106.0921 và 55855085.9731.
+
+\begin{figure}[h!]
+    \centering
+    \subfloat[Các giá trị tính toán được trong các ngày]
+      {\includegraphics[width=.7\linewidth]{Section2/res_RK4_3.png}}
+    \newline
+    \subfloat[Phác hoạ kết quả thành đồ thị]
+      {\includegraphics[width=\linewidth]{Section2/plot_RK4_3.png}}
+    \newline
+    \newline
+    \label{pic: test_SIR_1}
+    \caption{Kết quả tính toán và đồ thị so sánh với phương pháp Euler trong cùng trường hợp}
+\end{figure}
+
+Các lệnh vẽ đồ thị so sánh nằm trong file combine.ipynb. Các hình rẽ của từng cách tính riêng biệt sẽ được xuất ra file result.png.
+
+Dựa vào đồ thị so sánh, ta có thể thấy có sự chênh lệch số liệu giữa 2 phương pháp trong một khoảng thời gian, nhưng chúng sẽ cùng hội tụ tại các điểm tương tự nhau. Thực tế người ta thấy phương pháp Runge-Kutta bậc 4 cho kết quả hơn phương pháp Euler truyền thống.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 3 %%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Lấy mẫu cho hệ số $ \beta$  và $ \gamma$}
+\subsection{Tổng quan lý thuyết}
+\subsubsection{Phân phối chuẩn}
+Phân phối chuẩn, hay còn gọi là phân phối Gauss, là một phân phối xác xuất rất quan trọng, được áp dụng trong nhiều lĩnh vực. Nó là một họ các phân phối, khác nhau về giá trị trung bình (tham số vị trí) $\mu$ và phương sai $\sigma^2$. 
+
+Hàm mật độ xác xuất của một biến ngẫu nhiên $X$ với trung bình $\mu$ và phương sai $\sigma^2$ (hoặc độ lệch chuẩn $\sigma$) là một ví dụ của hàm Gauss và được cho như sau:
+\begin{align}
+    f(x; \mu, \sigma) = \dfrac{1}{\sigma \sqrt{2\pi}}  e^{-\dfrac{1}{2}\left(\dfrac{x-\mu}{\sigma}\right)^2}
+\end{align}
+
+Một biến ngẫu nhiên $X$ có phân phối này thì ta gọi $X$ là có phân phối chuẩn và ký hiệu $X\sim N(\mu,\sigma^2)$.
+
+Đồ thị của hàm mật độ xác xuất phụ thuộc vào $\mu$ và $\sigma$, $\mu$ xác định vị trí trung tâm của đồ thị, còn $\sigma$ xác định chiều dài và chiều rộng của đồ thị. Do đồ thị của hàm mật độ xác xuất có dạng hình chuông nên đôi khi, phân phối chuẩn còn được gọi là đường cong chuông. Do tính chất đó của đồ thị hàm mật độ xác xuất phân phối chuẩn, đây là phân phối rất phù hợp với các mô hình dịch bệnh khi thể hiện đầy đủ các giai đoạn từ ủ bệnh, tăng nhanh và đạt đỉnh cho đến khi giảm dần và kết thúc. 
+\subsubsection{Thuật toán Metropolis-Hastings}
+Marko Chain Monte Carlo (MCMC) cho phép ta vẽ ra được một phân phối ngay cả nếu ta không tính được nó dựa trên các quan sát và các giả thiết trước đó. MCMC là một lớp các cách thức và thuật toán Metropolis-Hastings là một hiện thực của MCMC.
+
+Xét bài toán: sử dụng thuật toán Metropolis-Hastings để lấy mẫu với tham số đầu vào là phân bố xác suất tiên nghiệm $\pi(\beta, \gamma)$ cho trước. Giá trị trả về là một mẫu gồm các cặp $\beta$ và $\gamma$ có phân bố xác suất $\pi(\beta, \gamma)$.
+
+Như đã phân tích ở trên, ta sẽ sử dụng phân bố chuẩn cho các phân bố xác xuất tiên nghiệm cho trước. Thuật toán Metropolis-Hastings được thực hiện như sau:
+\begin{itemize}
+    \item Bước 1:Ta giả sử $\beta$, $\gamma$ là 2 biến độc lập. Chọn phân bố xác suất tiên nghiệm cho $\beta$, $\gamma$ là hàm phân bố chuẩn:
+    \begin{align*}
+        & \pi(\beta) = f(\beta, \mu_{\beta}, \sigma_{\beta}^{2}) =  \dfrac{1}{\sigma_{\beta} \sqrt{2\pi}}e^{-\dfrac{1}{2} \left( \dfrac{\beta - \mu_{\beta}}{\sigma_{\beta}} \right)^{2}} \\
+        & \pi(\gamma) = f(\gamma, \mu_{\gamma}, \sigma_{\gamma}^{2}) =  \dfrac{1}{\sigma_{\gamma} \sqrt{2\pi}}e^{-\dfrac{1}{2} \left( \dfrac{\gamma - \mu_{\gamma}}{\sigma_{\gamma}}\right)^{2}}
+    \end{align*}
+    \item Bước 2: Khởi tạo mẫu $\beta = \beta_0, \gamma = \gamma_0$ ban đầu từ $\pi(\beta), \pi(\gamma)$.
+    \item Bước 3: Khởi tạo $\beta^*, \gamma^*$ ngẫu nhiên từ hàm phân phối chuẩn với giá trị $\beta, \gamma$ cho trước:\\
+    \begin{align}
+        \beta^* = \beta + N(0,1) \nonumber 
+        \intertext{hay} 
+        \beta^*| \beta \sim N(\beta, 1) \\
+        \gamma^* = \gamma^* + N(0,1) \nonumber
+        \intertext{hay} 
+        \gamma^*| \gamma \sim N(\gamma, 1)
+    \end{align}
+    Từ (8) và (9), kết hợp với (7), ta có:
+    \begin{center}
+         $p(\beta^*|\beta) = \dfrac{1}{\sqrt{2\pi}}e^{-\dfrac{1}{2}(\beta^*-\beta)^2}$ \\ 
+         $p(\gamma^*|\gamma) = \dfrac{1}{\sqrt{2\pi}}e^{-\dfrac{1}{2}(\gamma^*-\gamma)^2}$ \\
+    \end{center}
+
+    \item Bước 4: Vì $\beta$, $\gamma$ là 2 biến độc lập nhau nên
+    
+        $\begin{cases}
+            p(\beta, \gamma) = p(\beta)p(\gamma) \\ 
+            \pi(\beta, \gamma) = \pi(\beta)\pi(\gamma)
+        \end{cases}$
+        
+        Mà $ p(\beta^* | \beta) = p(\beta|\beta^*), p(\gamma^* | \gamma) = p(\gamma|\gamma^*)$ cho nên: $p(\beta^*,\gamma^* |\beta, \gamma ) = p (\beta,\gamma | \beta^*, \gamma^* )$.
+        
+        Nên $p(\beta, \gamma)$ được chọn ở đây là hàm đối xứng. Do đó: 
+    \begin{align*}
+         r = min \left( 1, \dfrac{\pi(\beta^*, \gamma^*)}{\pi(\beta, \gamma)} \right) =  \left( 1, \dfrac{\pi(\beta^*)\pi(\gamma^*)}{\pi(\beta)\pi(\gamma)} \right)
+    \end{align*}
+    
+    với $r$ được gọi là xác suất giữ lại $\beta^*, \gamma^*$ \\ 
+        
+      \item Bước 5: Lấy ngẫu nhiên giá trị $q$ từ phân phối đều liên tục $U(0,1)$
+      \begin{itemize}
+          \item Nếu $q < r$ chấp nhận mẫu $(\beta^*, \gamma^*)$, gán $\beta = \beta^*, \gamma = \gamma^*$
+          \item Ngược lại, giữ nguyên giá trị $\beta$, $\gamma$
+      \end{itemize}
+      
+    \end{itemize}
+    
+    Lặp lại từ Bước 2 cho đến khi đủ kích cỡ mẫu.
+\subsection{Hiện thực}
+Trong ví dụ này, từ bài báo \cite{Muk}, ta thấy $\mu$ là giá trị trung bình nên ta chọn nó bằng giá trị $\beta$ cho trong bài và giá trị ngẫu nhiên. Ta đi tạo mẫu $(\beta, \gamma)$ từ phân bố xác suất tiên nghiệm $\pi(\beta) $ với $\mu_\beta = 0.66, \sigma_\gamma= 0.11$ và $\pi(\gamma)$ với $\mu_\beta = 0.573, \sigma_\gamma = 0.1$. Với số lượng mẫu càng lớn, phân bố ngẫu nhiên tạo ra sẽ càng gần với 
+phân bố được cho trong tiên nghiệm, do đó ta sẽ càng có kết quả chính xác hơn. 
+
+\newpage
+Kết quả với số lượng mẫu $m=50000$:
+
+\begin{figure}[h!]
+    \centering
+    \subfloat[Phân bố mẫu $\beta \sim N(0.66, 0.11)$]
+      {\includegraphics[width=.5\linewidth]{Section3/beta.png}}
+    \subfloat[Phân bố mẫu $\gamma \sim N(0.573, 0.1)$]
+      {\includegraphics[width=.5\linewidth]{Section3/gamma.png}}
+    \newline
+    \newline
+    \label{pic: test_SIR_1}
+    \caption{Các phân bố mẫu của $\beta$ và $\gamma$ cùng với 50000 lần lặp}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.8]{Section3/samples.png}
+    \caption{Phân phối chung cho $(\beta, \gamma)$ với 50000 lần lặp}
+\end{figure}
+
+\newpage
+Kết quả với số lượng mẫu $m=100000$: 
+
+\begin{figure}[h!]
+    \centering
+    \subfloat[Phân bố mẫu $\beta \sim N(0.66, 0.11)$]
+      {\includegraphics[width=.5\linewidth]{Section3/beta2.png}}
+    \subfloat[Phân bố mẫu $\gamma \sim N(0.573, 0.1)$]
+      {\includegraphics[width=.5\linewidth]{Section3/gamma2.png}}
+    \newline
+    \newline
+    \label{pic: test_SIR_1}
+    \caption{Các phân bố mẫu của $\beta$ và $\gamma$ cùng với 100000 lần lặp}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.8]{Section3/samples2.png}
+    \caption{Phân phối chung cho $(\beta, \gamma)$ với 50000 lần lặp}
+\end{figure}
+
+Trong các hình trên, các chấm xanh thể hiện các điểm thoả mãn $(\beta, \gamma)$ có phân bố xác xuất (chuẩn) $\pi(\beta, \gamma)$ cho trước. Các đường xanh trong các phân bố mẫu $\beta$, $\gamma$ được tạo tự động để ước lượng đường phân bố liên tục gần nhất. Nội dung chi tiết hiện thực nằm trong file sample.py, các kết quả được xuất ra các file beta.png, gamma.png, sample.txt và samples.png. 
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 4 %%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Ước lượng giá trị $R_0$ ở các khu vực}
+\subsection{Tổng quan lý thuyết}
+Từ cơ sở lý thuyết ở Phần 3 vừa được đề cập, ta áp dụng Thuật toán Metropolis–Hastings; khi đó ta có thể để tạo được một mẫu ($\beta$, $\gamma$) dựa trên phân bố xác suất $\pi(\beta, \gamma)$.
+\newline Ta tiến hành tính hệ số ước lượng $R_0$.
+\begin{align*}
+    R_0 = \dfrac{\beta }{\gamma }
+\end{align*}
+
+Khi $R_0 < 1$ thì ta có thể kết luận không có đợt bùng phát dịch bệnh xảy ra do tỷ lệ tiếp xúc người mắc bệnh $\beta$ nhỏ hơn tỷ lệ hồi phục $\gama$. \\
+Với kết quả ngược lại, nếu $R_0 > 1$, ta có cơ sở kết luận rằng dịch bệnh sẽ bùng phát trong tương lai gần.
+
+Giá trị trung bình của $R_0$ được tính bằng công thức:
+\begin{align}
+    E(R_0) = \int {\pi (\beta ,\gamma |X)} {R_0}(\beta ,\gamma)
+\end{align}
+
+Giá trị trung bình này ta có thể ước lượng được vì $\pi(X | \beta, \gamma)$ có thể tính được dễ dàng từ công thức:
+\begin{align}
+    \pi (X|\beta ,\gamma ) = \prod\limits_{i: = 1}^n {f(X({t_i})|\beta ,\gamma )}  = \prod\limits_{i: = 1}^n {\dfrac{{{\gamma ^\beta }}}{{\Gamma (\beta )}}} X{({t_i})^{\beta  - 1}}\exp \left\{ { - \gamma X({t_i})} \right\}
+\end{align}
+
+Tuy nhiên, giá trị trung bình của hệ số $R_0$ không thể tính trực tiếp được thông qua lý thuyết tích phân do độ phức tạp trong việc tính toán quá lớn. Thay vào đó, ta sử dụng công thức xấp xỉ:
+\begin{align}
+    E({R_0}) = \int {\pi (\beta ,\gamma |X)} {R_0}(\beta ,\gamma )d(\beta ,\gamma ) \propto \int {\pi (X|\beta ,\gamma ){R_0}(\beta ,\gamma )d(\beta ,\gamma )}  \approx \sum\limits_{i: = 1}^m {\pi (X|{\beta _i},{\gamma _i})} \dfrac{{{\beta _i}}}{{{\gamma _i}}}
+\end{align}
+
+Từ giá trị xấp xỉ đạt được, ta sẽ phân tích và dự đoán được tình hình dịch bệnh sẽ có xu hướng bùng phát hay đã được khống chế trong tương lai gần.
+
+\subsection{Hiện thực}
+
+Thực hiện việc truy xuất cơ sở dữ liệu, với mỗi file $.csv$, thực hiện query 2 cột là \textit{Confirmed} và \textit{Recovered} với tên của quốc gia được chọn. Ví dụ, trong bài báo cáo này chọn hai quốc gia là Italy và Việt Nam.
+
+Sau đó, ta sẽ tính giá trị biến $X$, với $X$ được hiểu là biến ngẫu nhiên quan sát số ca mắc bệnh và số ca hồi phục tại từng thời điểm $t>0$.
+
+Do đó: $X(t_i) = Confirmed_{t_i} + Recovered_{t_i}$.
+
+Từ các lý thuyết đã trình bày như trên, kết hợp với chương trình đã viết ở phần 3, ta sẽ ước lượng giá trị trung bình của $R_0$. Trong đó, ở công thức $(11)$, ta lựa chọn $\pi$ là phân phối chuẩn, với các giá trị $\sigma$, $\mu$ của $\beta$ và $\gamma$ đươc chọn với lý do như phần 4. Đối với mỗi quốc gia, ta có được một giá trị $R_0$ trung bình tương ứng.
+
+Cuối cùng, ta thực hiện tính toán ước lượng tại 2 quốc gia đã chọn là Italy và Việt Nam. Ở cả hai quốc gia này, ta đều được kết quả là giá trị $R_0$ nhỏ hơn 1. Nội dung hiện thực nằm trong file Bai4.py được đính kèm.
+%Hiện thực tính toán được nằm trong file .
+\subsection{Phân tích}
+\subsubsection{Italy}
+Dịch Covid-19 bùng phát tại trung tâm tài chính Milan của Italy từ ngày 21-2, sau đó bắt đầu lan ra khu vực giàu có và đông dân ở miền bắc nước này. Italy nhanh chống trở thành ổ dịch lớn nhất thế giới với số ca mắc lên đến 245000 người, tổng số trường hợp tử vong lên đến 35000 tính đến ngày 23/7/2020.
+
+Đứng trước làn sóng Covid-19 diễn biến mạnh mẽ, ngay sau khi xuất hiện ca tử vong đầu tiên, quan chức cấp cao nước này đã ban hành lệnh giới nghiêm ở các vùng chịu ảnh hưởng nặng nề, sau đó là ban hành lệnh giới nghiêm trên phạm vi cả nước. Cụ thể: từ ngày 10-3 đến 3-4 là thời gian thi hành lệnh giới nghiêm, người dân khi ra khỏi nhà chỉ được đi trong bán kính 2km, đeo khẩu trang, phải có giấy xác nhận của cơ quan hành chính 
+và chỉ một người trong nhà được đi ra. Điều này nhằm hạn chế thấp nhất giá trị $\beta$ và từ đó giảm thiểu $R_0$ ở Italy. Đến nay mới có các kế hoạch khôi phục kinh tế.
+
+Sắc lệnh mới sẽ có hiệu lực trên khắp Italy, trong đó có đảo Sicily và Sardinia, và tác động đến khoảng 60 triệu dân.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{R0_Italy.png}
+    \caption{ Biểu đồ thay đổi giá trị $R_0$ của Italy}
+\end{figure}
+
+Nhờ chính sách cách ly và hạn chế đi lại được ban hành, chỉ số $R_0$ từ mức rất cao đến nay đã đang dần tiến về 0. Điều đó cho thấy việc cách ly và hạn chế đi lại đã ảnh hưởng rất lớn đến sự thay đổi của $R_0$.
+
+\subsubsection{Việt Nam}
+Có thể nói Việt Nam chúng ta hiện tại đang là một trong số ít các nước kiềm chế dịch bệnh Covid-19 hiệu quả. Tính tới thời điểm hiện tại (ngày 23 tháng 7 năm 2020), tổng số ca mắc bệnh là 412 ca, bình phục 365 ca và đặc biệt là không có trường hợp nào tử vong. Giáp biên giới Trung Quốc, nơi đầu tiên bùng phát dịch bệnh, nhưng Việt Nam lại có thể kiểm soát tốt tình hình lây nhiễm và được bạn bè quốc tế đánh giá cao.
+
+Đại dịch COVID-19 do virus SARS-CoV-2 gây ra được xác nhận lần đầu tiên tại Việt Nam vào ngày 23 tháng 1 năm 2020.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{R0_VietNam.png}
+    \newline
+    \caption{ Biểu đồ thay đổi giá trị $R_0$ của Việt Nam }
+\end{figure}
+
+Việt Nam đã thực hiện các biện pháp cách ly, theo dõi và hạn chế người đến từ vùng có dịch, đóng cửa biên giới và triển khai việc thực hiện khai báo y tế. Nhiều hoạt động tập trung đông người tại các địa phương bị hạn chế, đồng thời nhiều nơi thực hiện các biện pháp như đo thân nhiệt, trang bị chất sát khuẩn, phát khẩu trang miễn phí ở các nơi công cộng, siết chặt kiểm soát. Việc đi lại, buôn bán trong nước cũng bị hạn chế.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.4]{VietNam_GiaiDoan.png}
+    \newline
+    \caption{ Các giai đoạn và các mốc thời gian cụ thể về Covid-19 ở Việt Nam }
+\end{figure}
+
+
+Phân tích các mốc thời gian cụ thể để làm rõ biểu đồ $R_0$ tại Việt Nam: 
+
+\textbf{Giai đoạn 1}: gồm 16 ca bệnh COVID-19 đầu tiên. Hai trường hợp xác nhận nhiễm bệnh đầu tiên đã nhập viện vào Bệnh viện Chợ Rẫy, Thành phố Hồ Chí Minh, bao gồm một người đàn ông Trung Quốc 66 tuổi đi từ Vũ Hán đến Hà Nội để thăm con trai sống ở Việt Nam, và con trai 28 tuổi, người được cho là đã bị lây bệnh từ cha mình khi họ gặp gỡ tại Nha Trang. Vào ngày 1 tháng 2, một người phụ nữ 25 tuổi được xác định nhiễm virus corona tại tỉnh Khánh Hòa. Đáng chú ý, đây là trường hợp truyền nhiễm nội địa đầu tiên tại Việt Nam, dẫn đến việc thủ tướng Nguyễn Xuân Phúc công bố dịch tại Việt Nam và ra quyết định thắt chặt biên giới, thu hồi giấy phép hàng không và hạn chế thị thực. Ngày 25 tháng 2, trường hợp số 16 được tuyên bố hồi phục và xuất viện. Đây cũng là ca cuối cùng trong 16 ca đầu tiên ở Việt Nam xuất viện. Các biện pháp cách ly và xét nghiệm giúp phát hiện sớm virus được áp dụng nhanh và mạnh mẽ trong giai đoạn này. 
+
+\textbf{Giai đoạn 2}: gồm các ca bệnh xâm nhập từ nước ngoài. Tối ngày 6 tháng 3, Hà Nội đã công bố trường hợp đầu tiên dương tính với virus corona, là một phụ nữ 26 tuổi. Tối ngày 19 tháng 3, tổng số bệnh nhân trên cả nước lên 85. Hà Nội đã khoanh vùng khu vực có bệnh nhân, lập chốt tại 2 đầu khu phố Trúc Bạch, đóng cửa các hàng quán tại khu vực. Các đội điều tra dịch tễ lập danh sách những người tiếp xúc gần với bệnh nhân và những người tiếp xúc với người tiếp xúc gần tại khu vực nhà bệnh nhân; tại nơi bệnh nhân đến khám ban đầu; tại Bệnh viện Nhiệt đới cơ sở 2 và hồi cứu quá trình nhập cảnh tại sân bay Nội Bài của người này.
+
+\textbf{Giai đoạn 3}: với nguy cơ lây lan trong cộng đồng. Chiều 20/3, Bộ Y tế công bố 2 BN COVID-19 thứ 86 và 87 là 2 nữ điều dưỡng Bệnh viện Bạch Mai (Hà Nội) với tiền sử dịch tễ không cho thấy nguồn lây khi cả 2 không có lịch sử tiếp xúc với các BN COVID-19. Ngày 21/3, Việt Nam tạm dừng nhập cảnh đối với tất cả người nước ngoài từ 0 giờ ngày 22/3, đồng thời thực hiện cách ly tập trung 14 ngày đối với mọi trường hợp nhập cảnh. Từ 0 giờ ngày 1 tháng 4, Việt Nam thực hiện cách ly xã hội trong vòng 15 ngày. Cùng ngày, Thủ tướng Nguyễn Xuân Phúc công bố dịch COVID-19 trên phạm vi cả nước, thay thế cho quyết định công bố dịch trước đó vào ngày 1 tháng 2 năm 2020.
+
+\textbf{Giai đoạn 4}: là giai đoạn Việt Nam đã kiểm soát tốt dịch bệnh. Từ ngày 23 tháng 4, cả nước cơ bản dừng cách ly xã hội nhưng vẫn tiếp tục đảm bảo các quy tắc phòng chống dịch. Ngày 25 tháng 4, Thủ tướng ban hành chỉ thị 19 nhằm tiếp tục các biện pháp phòng, chống dịch COVID-19 trong tình hình mới.
+
+Có thể trong mỗi giai đoạn có nguy cơ bùng dịch ở nước ta, chỉ số $R_0$ từ mức dưới 1 tăng vọt lên đến 15, nhưng nhanh chóng quay về mức ban đầu. Đó là do các biện pháp cách ly, khoanh vùng và giãn cách xã hội do Chính phủ ban hành. Các biện pháp diễn ra nhanh chóng, hiệu quả, kịp thời nên $R_0$ tăng vọt nhưng cũng xuốg rất nhanh.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 5 %%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Kết luận}
+Mô hình SIR/SIRD được sử dụng trong bào báo cáo là mô hình tương đối tiêu chuẩn và đơn giản để mô phỏng lại đại dịch Covid 19. Với các số liệu được cập nhật hằng ngày, mô hình có thể đưa ra con số tương đối để phỏng đoán tình hình trong các ngày tiếp theo. Tuy nhiên, do ở mức đơn giản, không xét đến các biến số quan trọng khác như tình hình cách ly của người dân, tỉ lệ trang bị y tế được cung cấp, các nguồn hỗ trợ, ... nên mô hình chỉ mang tính tham khảo / cảnh báo, không nên sử dụng như số liệu chính thống cho các việc quan trọng như ban bố chính sách,...
+ 
+Hiện nay, với các công cụ hiện đại hơn như Machine Learning và sức mạnh tính toán lớn của các siêu máy tính, việc thêm / cập nhật các biến số trở nên khả thi thì mô hình thu được sẽ có sai số nhỏ so với thực tế. Đây là triển vọng rất lớn trong việc phân tích và đưa ra các chính sách phù hợp hơn nhằm đẩy lùi dịch bệnh, khôi phục kinh tế và trạng thái bình thường.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\addcontentsline{toc}{section}{Tài liệu}
+\begin{thebibliography}{99999}
+\bibitem[Dal]{Dal}{Dalgaard, P.} {\em Introductory Statistics with R.}  Springer 2008.
+
+\bibitem[K-Z]{K-Z}{Kenett, R. S. and Zacks, S.}
+{\em Modern Industrial Statistics: with applications in R, MINITAB and JMP,} 2nd ed.,  John Wiley and Sons, 2014.
+
+\bibitem[Ker]{Ker}{Kerns, G. J.}
+{\em Introduction to Probability and Statistics Using R,} 2nd ed., CRC 2015.
+\bibitem[VINIF]{VINIF}{Nguyễn Hoàng Thạch, Phan Thị Hà Dương}{\em Tìm hiểu về một Mô hình dự báo dịch Covid-19 từ Vũ Hán}
+\bibitem[A-J]{A-J}{Abhijit Chakraborty, Jiaying Chen}{\em Analyzing Covid-19 Data using SIRD Models}
+\bibitem[F-S]{F-S}{Frank R. Giordano, William P. Fox, Steven B. Horton}{\em A First Course in Mathematical} 5th ed., 2013.
+\bibitem[Muk]{Muk}{Mukesh Jakhar, P. K. Ahluwalia and Ashok Kumar
+}{\em COVID-19 Epidemic Forecast in Different States of India using SIR Model}, May 14, 2020
+\bibitem[NDH]{NDH}{NDH COVID-19 Corona Virus South African Resource & The Johns Hopkins University}
+{\em https://www.covid19sa.org}
+\bibitem[ZN]{ZN}{ZingNew}
+{\em Toàn cảnh 100 ngày chống dịch Covid-19 tại Việt Nam}, May 4, 2020 
+\bibitem[ND]{ND}{Báo Nhân Dân}
+{\em Italy thành ổ dịch Covid-19 lớn thứ hai thế giới, Thủ tướng lệnh phong tỏa toàn quốc }, March 11, 2020
+\bibitem[VE]{VE}{VnExpress}
+{\em Ca thứ 6 Việt Nam nhiễm virus Corona}, February 1, 2020 
+\bibitem[TT]{TT}{Tuoi Tre}
+{\em Dừng toàn bộ chuyến bay giữa Việt Nam và Trung Quốc từ chiều nay}, February 1, 2020 
+\end{thebibliography}
+\end{document}
+
+GA
